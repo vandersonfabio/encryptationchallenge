@@ -105,6 +105,14 @@ def polybusDecript(text):
 
     return result
 
+def convertBinToBase4(binaryString):
+    result = ""
+
+    for i in range(0, len(binaryString), 3):
+        char = binaryString[i:i+3]
+        result += str(int(char, 2))
+
+    return result
 
 if __name__ == '__main__':
     blockA = "gluhtlishjrvbadvyyplkaokqvbxjpwolypzavvdlhrvuuleatlzzhnlzdpajoavcpnlulyljpwolyrlfdvykpzaolopkkluzftivsvmklhaoputfmhcvypalovsilpuluk"
@@ -126,3 +134,41 @@ if __name__ == '__main__':
     print("* " * 50)
     print("Dica 03 : " + a)
 
+    encryptedText = 'klkbnqlcytfysryucocphgbdizzfcmjwkuchzyeswfogmmetwwossdchrzyldsbwnydednzwnefydthtddbojicemlucdygicczhoadrzcylwadsxpilpiecskomoltejtkmqqymehpmmjxyolwpeewjckznpccpsvsxauyodhalmriocwpelwbcniyfxmwjcemcyrazdqlsomdbfljwnbijxpddsyoehxpceswtoxwbleecsaxcnuetzywfn'
+    ux = ""
+
+    simbolMessage = "20 33 22 21 00 33 30 01 02 20 22 02 32 20 11 33 03 30 03 32 03 00 22 01 33 23 23 10 03 22 13 13 20 01 11 03 22 20 20 20 22 33 20 13 23 13 33 22 30 33 01 20 21 10 12 11 00 32 23 13 22 02 00 10 31 02 33 20 31 03 12 01 11 33 32 23 02 01 00 32 10 10 30 01 10 23 31 10 02 00 30 23 31 10 03 03 01 02 33 02 23 21 30 12 03 12 22 00 03 13 31 00 10 11 21 03 23 02 20 13 02 32 30 31 23 33 20 02 12 33 30 00 30 12 30 13 03 01 03 03 23 22 02 30 20 03 22 23 32 23 02 02 31 20 23 13 30 02"
+
+    simbolMessage = simbolMessage.replace(" ", "")
+
+
+    key = ""
+
+    for i in range(len(ux)):
+        char = ux[i]
+        if ord(char) == 97 or ord(char) == 101 or ord(char) == 105 or ord(char) == 111 or ord(char) == 117:
+            key += "1"
+        else:
+            key += "0"
+
+    print(simbolMessage)
+
+    simbolBinary = ""
+    for bit in range(len(simbolMessage)):
+        bin = ""
+        if simbolMessage[bit] == '0':
+            bin = "00"
+        if simbolMessage[bit] == '1':
+            bin = "01"
+        if simbolMessage[bit] == '2':
+            bin = "10"
+        if simbolMessage[bit] == '3':
+            bin = "11"
+
+        simbolBinary += bin
+
+    print(simbolBinary)
+
+    simbolBase4 = convertBinToBase4(simbolBinary)
+    print()
+    print(simbolBase4)
